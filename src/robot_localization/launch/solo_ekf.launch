@@ -1,0 +1,13 @@
+<launch>
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/solo_ekf.yaml" />
+
+    <!--  Placeholder for output topic remapping
+    <remap from="odometry/filtered" to=""/>
+    <remap from="accel/filtered" to=""/>
+    -->
+
+  </node>
+  <node pkg="tf2_ros" type="static_transform_publisher" name="vectornav_static_transform_publisher" args="0 0 0 0 0 0 /base_link /vectornav" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="map_static_transform_publisher" args="0 0 0 -1.6 0 0 /map /GPS" />
+</launch>

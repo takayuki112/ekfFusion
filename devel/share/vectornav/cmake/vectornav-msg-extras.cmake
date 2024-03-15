@@ -1,0 +1,1 @@
+/home/aaryan-atp/meloc/ekfFusion/devel/.private/vectornav/share/vectornav/cmake/vectornav-msg-extras.cmake

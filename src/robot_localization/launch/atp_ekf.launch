@@ -1,0 +1,31 @@
+<launch>
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se" clear_params="true">
+    <rosparam command="load" file="$(find robot_localization)/params/atp_ekf.yaml" />
+
+    <!--  Placeholder for output topic remapping
+    <remap from="odometry/filtered" to=""/>
+    <remap from="accel/filtered" to=""/>
+    -->
+
+  </node>
+  <node pkg="tf2_ros" type="static_transform_publisher" name="vectornav_static_transform_publisher" args="0 0 0 0 0 0 /base_link /vectornav" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="map_static_transform_publisher" args="0 0 0 0 0 0 /map /odom" />
+  <node pkg="tf2_ros" type="static_transform_publisher" name="gps_static_transform_publisher" args="0 0 0 0 0 0 /base_link /gps" />
+  <!-- <node pkg="tf2_ros" type="static_transform_publisher" name="base_link_map_static_transform_publisher" args="0 0 0 0 0 0 /base_link /map" /> -->
+
+  <node pkg="robot_localization" type="navsat_transform_node" name="navsat_transform">
+    <rosparam command="load" file="$(find robot_localization)/params/navsat_transform.yaml" />
+    
+    <!-- Remap the input topics as necessary -->
+    <remap from="/gps/fix" to="/gps_data"/>
+    <remap from="/imu/data" to="/vectornav/IMU"/>
+    <remap from="/odometry/filtered" to="/vectornav/Odom"/>
+  </node>
+
+  <!-- <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_odom" clear_params="true"/>
+
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_se_map" clear_params="true">
+    <remap from="odometry/filtered" to="odometry/filtered_map"/>
+  </node> -->
+
+</launch>

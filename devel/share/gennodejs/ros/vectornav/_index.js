@@ -1,0 +1,1 @@
+/home/aaryan-atp/meloc/ekfFusion/devel/.private/vectornav/share/gennodejs/ros/vectornav/_index.js

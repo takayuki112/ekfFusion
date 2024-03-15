@@ -1,0 +1,6 @@
+devel_space: /home/aaryan-atp/meloc/ekfFusion/devel
+install: false
+install_space: /home/aaryan-atp/meloc/ekfFusion/install
+profile: default
+source_space: /home/aaryan-atp/meloc/ekfFusion/src
+workspace: /home/aaryan-atp/meloc/ekfFusion
